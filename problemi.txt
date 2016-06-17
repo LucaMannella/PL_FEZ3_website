@@ -1,0 +1,4 @@
+Problemi sito web:
+
+1) la mail dovrebbe essere unique
+2) se la mail non è unique sarà necessario una autenticazione username+password

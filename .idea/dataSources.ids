@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - pl_fez03@localhost" uuid="687f8d2c-0ea7-45bf-8aff-d0a2b9d2902d">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="pl_fez03"/>
+      <table id="2" parent="1" name="clients"/>
+      <table id="3" parent="1" name="customers"/>
+      <table id="4" parent="1" name="suspicious_pictures"/>
+      <table id="5" parent="1" name="test"/>
+      <column id="6" parent="2" name="MAC">
+        <mandatory>1</mandatory>
+        <data-type>char(17)</data-type>
+      </column>
+      <column id="7" parent="2" name="Port">
+        <mandatory>1</mandatory>
+        <data-type>int(10) unsigned</data-type>
+      </column>
+      <key id="8" parent="2" name="PRIMARY">
+        <columns>MAC</columns>
+        <primary>1</primary>
+      </key>
+      <column id="9" parent="3" name="MAC">
+        <mandatory>1</mandatory>
+        <data-type>char(17)</data-type>
+      </column>
+      <column id="10" parent="3" name="email">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <column id="11" parent="3" name="pin">
+        <mandatory>1</mandatory>
+        <data-type>varchar(64)</data-type>
+      </column>
+      <key id="12" parent="3" name="PRIMARY">
+        <columns>MAC</columns>
+        <primary>1</primary>
+      </key>
+      <column id="13" parent="4" name="MAC">
+        <mandatory>1</mandatory>
+        <data-type>char(17)</data-type>
+      </column>
+      <column id="14" parent="4" name="Timestamp">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="15" parent="4" name="Path">
+        <mandatory>1</mandatory>
+        <data-type>varchar(100)</data-type>
+      </column>
+      <index id="16" parent="4" name="Path">
+        <columns>Path</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="17" parent="4" name="Path">
+        <columns>Path</columns>
+        <underlying-index>Path</underlying-index>
+      </key>
+      <key id="18" parent="4" name="PRIMARY">
+        <columns>MAC
+Timestamp</columns>
+        <primary>1</primary>
+      </key>
+      <column id="19" parent="5" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="20" parent="5" name="Name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)</data-type>
+      </column>
+      <key id="21" parent="5" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
