@@ -2,7 +2,7 @@
 	/** Created by Luca on Date: 15/06/2016 at Time: 00:13 **/
 
 	session_start();
-	$SessionTime = 120;	#time in seconds (the requirement is 2 minutes)
+	$SessionTime = 600;	#time in seconds
 	
 	require_once 'destroySession.php';
 	
