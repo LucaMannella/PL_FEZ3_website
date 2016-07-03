@@ -29,45 +29,50 @@
                 /**********************************/
                 /******* REMOVE RESERVATION *******/
                 /**********************************/
-/*              if(count($_POST)!==0) {
-                    if(isset($_POST['id'])) {
-                        $id = $_POST['id'];
-
+                if(count($_POST)!==0) {
+                    if(isset($_POST['DeleteAll'])) {
                         $conn = connectToDB($db_host, $db_user, $db_pass, $db_name);
-                        if($conn !== false) {
-                            $id = sanitizeString($conn, $id);
-                            try {
-                                if(!mysqli_autocommit($conn, FALSE))
-                                    throw new Exception("DEBUG - Impossible to set autocommit to FALSE");
 
-                                $res = mysqli_query($conn, "SELECT * FROM booking WHERE id=$id AND username='$username' FOR UPDATE ");
-                                if(!$res)	# Fetch data from the database
-                                    throw new Exception("DEBUG - Query 1 (fetch reservation's info) failed!");
+                        if($conn !== false)
+                        {
+                            $query = "SELECT MAC FROM customers WHERE email = '".$username."';";
+                                      
+                            $res = mysqli_query($conn, $query);
+
+                            if($res) {
                                 $row = mysqli_fetch_array($res);
-                                if($row==NULL)
-                                    throw new Exception("<p class='red'>The desired reservation does not exist anymore!</p>");
-                                mysqli_free_result($res);
+                                if($row != null) {
+                                    $myMac = $row["MAC"];
+                                    // in this case I suppose that for one email there is only one MAC
 
-                                $res = mysqli_query($conn, "DELETE FROM booking WHERE id=$id");
-                                if(!$res)	# Remove reservation from the database
-                                    throw new Exception("DEBUG - Query 2 (delete reservation) failed!");
+                                    $query = "DELETE FROM suspicious_pictures WHERE MAC = '".$myMac."';";
 
-                                if(!mysqli_commit($conn))
-                                    throw new Exception("<p style='color:red'>Impossible to commit the operation!</p>");
-
-                                if(!mysqli_autocommit($conn, TRUE))
-                                    throw new Exception("DEBUG - Impossible to set autocommit to TRUE");
-                            }
-                            catch (Exception $e) {
-                                mysqli_rollback($conn);
-                                mysqli_autocommit($conn, TRUE);
-                                echo $e->getMessage();
+                                    $res = mysqli_query($conn, $query);
+                                    if (!$res): ?>
+                                        <script type="text/javascript">
+                                            window.alert("Impossible to delete the pictures!");
+                                        </script>
+                                    <?php else:
+                                        $myMac = str_replace("-","", $myMac);
+                                        $myPath = getcwd()."/suspicious_pictures/".$myMac."/";
+                                        $ok = DeleteDirectory($myPath);
+                                        if($ok) { ?>
+                                        <script type="text/javascript">
+                                            window.alert("Pictures successfully deleted!");
+                                        </script>
+                                    <?php } else { ?>
+                                        <script type="text/javascript">
+                                            window.alert("Impossible to delete the pictures from the file system!");
+                                        </script>
+                                    <?php }
+                                    endif;
+                                }
                             }
                             mysqli_close($conn);
                         }
                     }
 	    		}
-*/
+
                 /***********************************/
                 /********* DISPLAY PICTURES ********/
                 /***********************************/
@@ -106,6 +111,10 @@
       			echo "<h4>If you are already registered, please <strong><a href='login.php'>log in</a></strong>!</h4>";
       		endif; ?>
       		</div>
+            <form id="UserData" method="post" action="./personalPage.php" >
+                <input type="text" name="DeleteAll" style="visibility: hidden" >
+                <button type="submit" class="button"> Remove Pictures </button>
+            </form>
 		</div>
   		
 	  	<?php include_once './codePiece/footer.php'; ?>
