@@ -9,7 +9,8 @@ define("MAC_LENGTH", 17);
  * @param $var
  * @return string
  */
-function sanitizeString($conn, $var) {
+function sanitizeString($conn, $var)
+{
 	$var = strip_tags($var);
 	$var = htmlentities($var);
 	$var = stripslashes($var);
@@ -29,7 +30,8 @@ function sanitizeString($conn, $var) {
  *
  * @return boolean|object Returns an object that represent a link to the database, false if something wrong happens.
  */
-function connectToDB($server, $user, $pass, $database){
+function connectToDB($server, $user, $pass, $database)
+{
 	$conn = mysqli_connect($server, $user, $pass, $database);
 	if($conn == false){
 		echo "Connection Error (".mysqli_connect_errno().")".mysqli_connect_error();
@@ -49,7 +51,8 @@ function connectToDB($server, $user, $pass, $database){
  * This function prints also on the client screen all the missing values.
  * @return bool - True if all the values are not empty, false otherwise.
  */
-function validRegistrationValues() {
+function validRegistrationValues()
+{
 	# empty() { return (isset($var) || $var == false) }
 	# my previous check --> if ( !isset($_POST['mac']) )||( $_POST['mac']==="" )
 	$toReturn = true;
@@ -94,7 +97,8 @@ function validRegistrationValues() {
  *
  * @return bool - True if the mac doesn't exist, false otherwise.
  */
-function isMACRegistered($conn, $table, $mac) {
+function isMACRegistered($conn, $table, $mac)
+{
 	$toReturn = false;
 	$res = mysqli_query($conn, "SELECT * FROM $table WHERE MAC='$mac'");
 	if (!$res)
@@ -114,7 +118,8 @@ function isMACRegistered($conn, $table, $mac) {
  *
  * @return bool - True if all the values are not empty, false otherwise.
  */
-function validLoginValues() {
+function validLoginValues()
+{
 	if( empty($_POST["email"]) || !filter_var($_POST["email"], FILTER_VALIDATE_EMAIL) )
 		return false;
 	if( empty($_POST["pin"]) || (strlen($_POST["pin"]) != PIN_LENGTH) )
@@ -133,7 +138,8 @@ function validLoginValues() {
  *
  * @return bool - True if the email doesn't exist, false otherwise.
  */
-function validLogin($conn, $email, $pin) {
+function validLogin($conn, $email, $pin)
+{
 	$toReturn = true;
 	$res = mysqli_query($conn, "SELECT * FROM customers WHERE email='$email' AND pin='$pin'");
 	if ($res==false) {
@@ -162,4 +168,28 @@ function isValidMac($mac)
 	else
 		return false;
 }
+
+/**
+ * This function delete a directory recursively.
+ *
+ * @param $path - Directory path.
+ * @return bool - Return false if the method fails.
+ */
+function DeleteDirectory($path)
+{
+	if (is_dir($path) === true) {
+		$files = array_diff(scandir($path), array('.', '..'));
+
+		foreach ($files as $file)
+			DeleteDirectory(realpath($path) . '/' . $file);
+
+		return rmdir($path);
+	}
+
+	else if (is_file($path) === true)
+		return unlink($path);
+
+	return false;
+}
+
 ?>
