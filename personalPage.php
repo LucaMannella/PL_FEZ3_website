@@ -21,8 +21,14 @@
   		<div id="content-wrap">
             <img src="images/security.jpg" width="950" height="250" alt="headerphoto" class="no-border" />
             <?php require_once './codePiece/sidebar.php'; ?>
-    		
+            
     		<div id="main">
+                <form id="UserData" method="post" action="./personalPage.php" >
+                    <label style="display:inline">Press this button to remove all your pictures </label>
+                    <input type="text" name="DeleteAll" style="visibility: hidden; display: inline" >
+                    <button type="submit" class="button" style="display:inline"> Remove Pictures </button>
+                </form>
+
     		<?php require_once './codePiece/noscript.php';	?>
     		<?php if($loggedIn):
 
@@ -111,10 +117,6 @@
       			echo "<h4>If you are already registered, please <strong><a href='login.php'>log in</a></strong>!</h4>";
       		endif; ?>
       		</div>
-            <form id="UserData" method="post" action="./personalPage.php" >
-                <input type="text" name="DeleteAll" style="visibility: hidden" >
-                <button type="submit" class="button"> Remove Pictures </button>
-            </form>
 		</div>
   		
 	  	<?php include_once './codePiece/footer.php'; ?>
