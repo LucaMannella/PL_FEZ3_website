@@ -56,7 +56,7 @@
                                     $res = mysqli_query($conn, $query);
                                     if (!$res): ?>
                                         <script type="text/javascript">
-                                            window.alert("Impossible to delete the pictures!");
+                                            window.alert("Impossible to delete the pictures from the database!");
                                         </script>
                                     <?php else:
                                         $myMac = str_replace("-","", $myMac);
@@ -65,10 +65,6 @@
                                         if($ok) { ?>
                                         <script type="text/javascript">
                                             window.alert("Pictures successfully deleted!");
-                                        </script>
-                                    <?php } else { ?>
-                                        <script type="text/javascript">
-                                            window.alert("Impossible to delete the pictures from the file system!");
                                         </script>
                                     <?php }
                                     endif;
