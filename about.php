@@ -30,10 +30,8 @@
                 <p>The <strong>.NET Micro Framework</strong> (also called NETMF) is an open-source .NET platform for resource-constrained devices with at least 256 KB of flash memory and 64 KB of RAM. It includes a small version of the .NET CLR and supports development in C#, Visual Basic .NET, and debugging (in an emulator or on hardware) using Microsoft Visual Studio. NETMF has a subset of the .NET base class libraries, an implementation of Windows Communication Foundation (WCF), a GUI framework loosely based on Windows Presentation Foundation (WPF), and a Web Services stack based on SOAP and WSDL. NETMF also features additional libraries specific to embedded applications. The .NET Micro Framework aims to make embedded development easier, faster, and less expensive by giving embedded developers access to the modern technologies and tools used by desktop application developers. Additionally, it allows desktop .NET developers to use their skills in the embedded world, enlarging the pool of qualified embedded developers.</p>
                 <p><strong>AForge.NET</strong> is an open source C# framework with several image processing functionalities designed for developers and researchers in the fields of Computer Vision and Artificial Intelligence originally developed by Andrew Kirillov for the .NET Framework.</p>
                 <br>
-                <h2>Our Project</h2>
+                <h2>Our Project Mounted on the Board</h2>
                 <img src="images/physical_project.jpeg" width="617" height="387" alt="Picture of our project." class="no-border" style="margin:0 0 30px 0;" />
-                <br>
-                <p> <span style="color:red">Disclaimer</span>:<br> All pictures present in the website are not of our property. We do not hold any rights on them.</p>
                 <br>
 				<div class="maps">
 					<h2>Where to find us</h2>
@@ -41,6 +39,8 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.156520999295!2d7.663592903808626!3d45.073405913507976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47886d0586cd8db7%3A0xc2ecb5447b50cf7c!2sCorso+Inghilterra%2C+25%2C+10138+Torino!5e0!3m2!1sit!2sit!4v1467736609274" width="500" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 				</div>
                 <BR>
+                <p> <span style="color:red">Disclaimer</span>:<br> All pictures present in the website are not of our property. We do not hold any rights on them.</p>
+                <br>
       		</div>
 		</div>
 		<?php include_once './codePiece/footer.php'; ?>
